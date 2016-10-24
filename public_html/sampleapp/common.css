@@ -1,0 +1,30 @@
+@import "/dojox/grid/resources/claroGrid.css";
+
+/*Grid needs an explicit height by default*/
+#gridDiv {
+    height: 20em;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.minusIcon {
+   background-image: url("images/minus.gif"); /* Type in your image name here */
+   background-repeat: no-repeat;
+   width: 16px;
+   height: 16px;
+   text-align: center;
+} 
+.plusIcon {
+   background-image: url("images/plus.gif"); /* Type in your image name here */
+   background-repeat: no-repeat;
+   width: 16px;
+   height: 16px;
+   text-align: center;
+} 
+
+

@@ -1,0 +1,55 @@
+<div>
+    <div data-dojo-type="dijit/form/Form" id="myForm" data-dojo-id="myForm" data-dojo-attach-point="propertiesForm"
+         encType="multipart/form-data" action="" method="post">
+
+        <div data-dojo-type="dijit/form/Button" data-dojo-attach-point="dialogButton">Show Dialog</div>
+        <div data-dojo-type="dijit/form/Button" data-dojo-attach-point="hideButton" data-dojo-props="iconClass:'minusIcon',showLabel:false"></div>
+        <div id="toHide">
+            <div data-dojo-type="dojox/layout/TableContainer"
+                 data-dojo-attach-point="tableContainer" data-dojo-props="spacing:10, cols:2, style:{width: '100%', height : '100%'}">
+                <div data-dojo-attach-point="name" name="name" required="true" value="the name"
+                     title="${file.name}:" data-dojo-type="dijit/form/TextBox" data-dojo-props="style:{width: '100%'}" colspan="1"></div>
+                <div data-dojo-attach-point="type" name="type" disabled="disabled"
+                     title="${file.type}:" data-dojo-type="dijit/form/TextBox" data-dojo-props="style:{width: '100%'}"></div>
+                <div data-dojo-attach-point="location" name="location" disabled="disabled"
+                     title="${file.location}:" data-dojo-type="dijit/form/TextBox" data-dojo-props="style:{width: '100%'}"></div>
+                <div data-dojo-attach-point="size" name="size" disabled="disabled" constraints="{pattern: '###,##0 bytes'}"
+                     title="${file.size}:" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="style:{width: '100%'}"></div>
+                <div data-dojo-attach-point="created" name="created" disabled="disabled"
+                     title="${file.created}:" data-dojo-type="dijit/form/DateTextBox" data-dojo-props="style:{width: '100%'}"></div>
+                <div data-dojo-attach-point="modified" name="modified" disabled="disabled"
+                     title="${file.modified}:" data-dojo-type="dijit/form/DateTextBox" data-dojo-props="style:{width: '100%'}"></div>
+                <input data-dojo-attach-point="readOnly" name="readOnly" value="readOnly"
+                       title="${file.readOnly}:" data-dojo-type="dijit/form/CheckBox"/>
+                <input data-dojo-attach-point="hidden" name="hidden" value="hidden"
+                       title="${file.hidden}:" data-dojo-type="dijit/form/CheckBox"/>
+                <div data-dojo-attach-point="date" name="date"
+                     title="${file.date}:" data-dojo-type="dijit/form/DateTextBox" data-dojo-props="style:{width: '100%'}"></div>
+                <div data-dojo-attach-point="comment" name="comment"
+                     title="${file.comment}:" data-dojo-type="dijit/form/Textarea" colspan="2" data-dojo-props="style:{width: '100%'}"></div>
+
+
+                <select data-dojo-attach-point="label" name="label" data-dojo-type="dijit/form/Select" title="${file.label}:">
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                </select>
+                <select data-dojo-attach-point="user" name="user" data-dojo-type="dijit/form/FilteringSelect" title="${file.user}:" data-dojo-props="hasDownArrow : false,
+                        style:{width: '300px'},
+                        searchAttr: 'name',
+                        placeHolder : 'Select a User...'">
+                </select>
+
+                <div data-dojo-attach-point="value" name="value" data-dojo-props="constraints:{fractional:true},
+                     currency:'EUR',
+                     invalidMessage:'Invalid amount. Cents are required.', style:{width: '100%'}"
+                     title="${file.value}:" data-dojo-type="dijit/form/CurrencyTextBox" colspan="2" ></div>
+
+
+            </div>
+        </div>
+    </div>
+     <div data-dojo-attach-point="okButton"
+         data-dojo-type="dijit/form/Button" data-dojo-props="label:'OK',style:{width: '100%', height : '100%'}"></div>
+</div>

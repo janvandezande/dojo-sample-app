@@ -1,0 +1,22 @@
+<div class="${baseClass}" data-dojo-attach-point="containerNode" style="height:100%;">
+    <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'sidebar', gutters:true, liveSplitters:true" style="height:100%;width:100%;" data-dojo-attach-point="subContainerWidget">
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region:'top'">top</div>
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region:'leading'">
+            <div data-dojo-type="sampleapp/widget/Tree"></div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region:'center'">
+            <div data-dojo-type="dijit/layout/TabContainer" style="width: 100%; height: 100%;">
+                <div data-dojo-type="dijit/layout/ContentPane" title="properties" data-dojo-props="selected:true">
+                    <div data-dojo-type="sampleapp/widget/Properties" data-dojo-attach-point="properties"></div>
+                </div>
+                <div data-dojo-type="dijit/layout/ContentPane" title="List" data-dojo-props="selected:false">
+                    <div data-dojo-type="sampleapp/widget/List" data-dojo-attach-point="list"></div>
+                </div>
+            </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region:'trailing'">
+            test right
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region:'bottom'">Bottom</div>
+    </div>
+</div>

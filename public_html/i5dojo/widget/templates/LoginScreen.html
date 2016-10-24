@@ -1,0 +1,18 @@
+<div>
+	<div data-dojo-type="dijit/Dialog" data-dojo-attach-point="loginScreen"
+		title="Login">
+		<div data-dojo-attach-point="loginForm" encType="multipart/form-data"
+			data-dojo-type="dijit/form/Form" method="post">
+			<div data-dojo-type="dojox/layout/TableContainer"
+				data-dojo-attach-point="tableContainer" data-dojo-props="cols:1">
+				<div data-dojo-attach-point="userName" name="username"
+					title="${common.username}:" data-dojo-type="dijit/form/TextBox"></div>
+				<div data-dojo-attach-point="password" name="password"
+					title="${common.password}:" data-dojo-props="type: 'password'"
+					data-dojo-type="dijit/form/TextBox"></div>
+			</div>
+			<div data-dojo-attach-point="okButton"
+				data-dojo-type="dijit/form/Button" data-dojo-props="label:'OK'"></div>
+		</div>
+	</div>
+</div>
