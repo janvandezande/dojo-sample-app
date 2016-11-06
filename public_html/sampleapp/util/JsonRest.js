@@ -47,7 +47,7 @@ define(["dojo/_base/declare",
             }
             if (options && options.sort) {
                 var sortParam = this.sortParam;
-                query += (query || hasQuestionMark ? "&" : "?") + (sortParam ? sortParam + '=' : "sort=(");
+                query += (/*query  || */hasQuestionMark ? "&" : "?") + (sortParam ? sortParam + '=' : "sort=(");
                 for (var i = 0; i < options.sort.length; i++) {
                     var sort = options.sort[i];
                     query += (i > 0 ? "," : "") + (sort.descending ? this.descendingPrefix : this.ascendingPrefix) + encodeURIComponent(sort.attribute);

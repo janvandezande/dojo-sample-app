@@ -7,38 +7,82 @@ define([
     "dojo/text!./templates/List.html",
     "sampleapp/util/JsonRest",
     "dojo/data/ObjectStore",
-    "dojox/grid/DataGrid"
+    "dojox/grid/cells",
+//    "dojo/store/Memory",
+//    "dojo/store/Cache",
+    "sampleapp/grid/DataGrid"
 
-], function (declare, _WidgetBase, _OnDijitClickMixin, _TemplatedMixin, _WidgetsInTemplateMixin, template, JsonRest, ObjectStore) {
+], function (declare, _WidgetBase, _OnDijitClickMixin, _TemplatedMixin, _WidgetsInTemplateMixin, template, JsonRest, ObjectStore, cells, DataGrid) {
     return declare("sampleapp.widget.List", [_WidgetBase, _OnDijitClickMixin, _TemplatedMixin, _WidgetsInTemplateMixin], {
         templateString: template,
+        standby: null,
         postCreate: function () {
             this.inherited(arguments);
-            console.log("postCreate List");
+
         },
         startup: function () {
             this.inherited(arguments);
-            var store = new JsonRest(
-                    {
-                        target: "grid/filelist/d_58__92_Dojo Workshop"
-                    }
-            );
-
+//            this.store = this.getStore("new");
+//            this.store = new JsonRest(
+//                    {
+//                        target: "grid/filelist/new",
+//                        idAttribute:"id"
+//                    }
+//            );
+//            this.grid.set('query', "new");
+            //this.grid.set('store', ObjectStore({objectStore: this.getStore("new")}));
+//            this.store.query({"path": "new"});
             /*set up layout*/
-            var layout = [[
-                    {'name': 'Name', 'field': 'name', 'width': '100px'},
-                    {'name': 'Type', 'field': 'type', 'width': '100px'},
-                    {'name': 'Size', 'field': 'size', 'width': '200px'},
-                    {'name': 'Creation Date', 'field': 'creationDate', 'width': '150px'},
-                    {'name': 'Last Modification Date', 'field': 'modificationDate', 'width': '150px'}
-                ]];
 
-            this.grid.set('store', ObjectStore({objectStore: store}));
-//            this.grid.set('query', 'd_58__92_Dojo Workshop');
-            this.grid.set('structure', layout);
-            this.grid.set('columnReordering', true);
+//            this.grid.set('structure', layout);
+//            this.grid.set('columnReordering', true);
+//            this.grid.set('singleClickEdit', true);
+////            this.grid.set('editable', true);
+////            store.query({path:'d_58__92_Dojo Workshop'});
+//            this.grid.render();
+
+            console.log("postCreate List");
+            var layout = [{
+                    defaultCell: {editable: "false", type: cells._Widget, styles: "text-align: left;"},
+                    cells: [
+                        {name: "Name", field: "name", width: "200px", type: cells._Widget, editable: "true"},
+                        {name: "Type", field: "type", width: "100px"},
+                        {name: "Size", field: "size", width: "200px"},
+                        {name: "Creation Date", field: "creationDate", width: "150px"},
+                        {name: "Last Modification Date", field: "modificationDate", width: "150px"}
+                    ]
+                }];
+
+            this.grid = new DataGrid({
+                id: 'grid',
+                store: ObjectStore({objectStore: this.getStore("new")}),
+                structure: layout,
+                rowSelector: '20px'});
+
+            /*append the new grid to the div*/
+            this.grid.placeAt("gridDiv");
+
+            /*Call startup() to render the grid*/
+            this.grid.startup();
+
+
+        },
+        setListTarget: function (id) {
+//            this.grid.set('query', id);
+//            this.store = new JsonRest(
+//                    {
+//                        target: "grid/filelist/" + id,
+//                        idAttribute:"id"
+//                    }
+//            );
+            this.grid.setStore(ObjectStore({objectStore: this.getStore(id)}));
             this.grid.render();
-//            store.query({path:'d_58__92_Dojo Workshop'});
+//            this.grid.store.fetch({"query":{"path": id}});
+//            this.grid.update();
+        },
+        getStore: function (id) {
+            return JsonRest({target: "grid/filelist/" + id,
+                idProperty: "id"});
         }
     });
 });

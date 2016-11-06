@@ -9,10 +9,11 @@ define([
     "dijit/tree/ObjectStoreModel",
     "dojo/store/JsonRest",
     "dijit/registry",
-    "sampleapp/util/Request"
+    "sampleapp/util/Request",
+    "dojo/io-query"
   
 
-], function (declare, _WidgetBase, _OnDijitClickMixin, _TemplatedMixin, _WidgetsInTemplateMixin, template, Tree, ObjectStoreModel, JsonRest, registry, Request) {
+], function (declare, _WidgetBase, _OnDijitClickMixin, _TemplatedMixin, _WidgetsInTemplateMixin, template, Tree, ObjectStoreModel, JsonRest, registry, Request, ioQuery) {
     return declare("sampleapp.widget.Tree", [_WidgetBase, _OnDijitClickMixin, _TemplatedMixin, _WidgetsInTemplateMixin], {
         templateString: template,
         postCreate: function () {
@@ -31,9 +32,11 @@ define([
             });
 
             // set up the model, assigning governmentStore, and assigning method to identify leaf nodes of tree
+            var st = "c:/Dojo Workshop".replace(" ", "_"+ " ".charCodeAt(0) + "_").replace("/", "_"+ "/".charCodeAt(0) + "_").replace(":", "_"+ ":".charCodeAt(0) + "_");
+            console.log(st);
             var treeModel = new ObjectStoreModel({
                 store: treeStore,
-                query: {id: 'd_58__92_Dojo Workshop'},
+                query: {id: st},
                 // To show (+) before an object
                 mayHaveChildren: function (item) {
                     return item.directory;
@@ -48,6 +51,8 @@ define([
                 },
                 onClick: function(event){
                     var form = registry.byId("myForm");
+                    var list = registry.byId("fileList");
+                    list.setListTarget(event.id);
                     new Request().get("/tree/file", {"filePath":event.id}).then(
                     function(data){
                         form.set('value', data);
@@ -57,9 +62,7 @@ define([
                     console.log(event);
                 }
             }, this.treeWidget);
-            
         }
-
     });
 });
 
