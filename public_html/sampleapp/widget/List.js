@@ -57,6 +57,8 @@ define([
                 id: 'grid',
                 store: ObjectStore({objectStore: this.getStore("new")}),
                 structure: layout,
+                columnReordering: true,
+                singleClickEdit: true,
                 rowSelector: '20px'});
 
             /*append the new grid to the div*/

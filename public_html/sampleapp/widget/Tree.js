@@ -60,7 +60,11 @@ define([
                     });
                     console.log('node clicked clicked');
                     console.log(event);
+                },
+                onLoad: function(){
+                    self.getParent().getParent().getParent().subContainerWidget.resize();
                 }
+            
             }, this.treeWidget);
         }
     });

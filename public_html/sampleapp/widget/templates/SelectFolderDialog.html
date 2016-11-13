@@ -1,0 +1,11 @@
+<div>
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="theDialog" title="Upload files" data-dojo-props="onHide:this.hideDialog">
+        <div style="width: 300px; height: 500px;">
+            <div id="uploader"></div><br>
+            <div id="dropTarget">Drop files here !</div><br>
+            <div id="files" data-dojo-type="dojox/form/uploader/FileList" data-dojo-props='uploaderId:"uploader"' ></div><br>
+            <div data-dojo-type="dijit/form/Button" data-dojo-attach-point="uploadButton" data-dojo-props="label:'Upload selected files',showLabel:true"></div>
+            <div data-dojo-type="dijit/form/Button" data-dojo-attach-point="closeButton" data-dojo-props="label:'close',showLabel:true"></div>
+        </div>
+    </div>
+</div>
